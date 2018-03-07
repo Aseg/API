@@ -1,9 +1,14 @@
 pipeline {
     agent any
     stages {
-        stage('Example') {
+        stage('Build') {
             steps {
                 echo 'Hello World'
+            }
+        }
+         stage('Deploy') {
+            steps {
+                archiveArtifacts artifacts: 'docker-compose.yml', fingerprint: true
             }
         }
     }
